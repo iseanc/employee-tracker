@@ -13,8 +13,11 @@ INSERT INTO role (title, salary, department_id)
     ("Recruitment Team Lead","60000",3),
     ("Manager","90000",4);
 
-SHOW COLUMNS FROM employee ;
 
--- INSERT INTO employee (first_name, last_name,  role_id,manager_id)
---   VALUES 
---     ("Able","Baker",)
+
+INSERT INTO employee (first_name, last_name)
+  VALUES 
+    ("Able","Baker"),
+    ("Charlie","Daniels"),
+    ("Enya","Fagan"),
+    ("Greta","Heisenberg");
