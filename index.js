@@ -1,5 +1,5 @@
 // Exports
-module.exports = mainMenu;
+module.exports = {mainMenu, addDepartment};
 
 // IMPORT REQUIRED PACKAGES/MODULES
 // Import and require console.table
@@ -27,7 +27,10 @@ const {
   deleteEmployee,
   viewDepartmentBudget } = require('./lib/sql');
 
-const { chooseMainAction } = require('./lib/prompts');
+const { 
+  chooseMainAction, 
+  promptDepartmentName,
+ } = require('./lib/prompts');
 
 // ----------------------------------------------
 
@@ -39,12 +42,25 @@ function mainMenu() {
     .prompt(chooseMainAction)
     // and process input
     .then((answers) => {
-      returnToMainMenu(answers.mainActionChoice); //, mainMenu
+      processMainMenuChoice(answers.mainActionChoice); //, mainMenu
    })
     
 }
 
-function returnToMainMenu(mainActionChoice, callbackFunction) {
+function addDepartment() {
+  inquirer
+  .prompt(promptDepartmentName)
+  .then((answers) => {
+      if(answers.departmentName !== "") {
+        insertNewDepartment(answers.departmentName);
+      } else {
+        console.log("Please enter a name for the new department");
+        addDepartment();
+      }
+  })
+}
+
+function processMainMenuChoice(mainActionChoice, callbackFunction) {
 
   switch(mainActionChoice) {
     case 'viewalldepartments':
@@ -58,7 +74,7 @@ function returnToMainMenu(mainActionChoice, callbackFunction) {
       selectAllEmployees();
       break;
     case 'addadepartment': 
-      insertNewDepartment();
+      addDepartment();
       break;
     case 'addarole': 
       insertNewRole();
