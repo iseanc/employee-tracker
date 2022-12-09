@@ -11,22 +11,29 @@ Provide a short description explaining the what, why, and how of your project. U
 
 This project allows a business owner to view and manage the departments, roles, and employees in a company, so they can organize and plan their business.
 
+The main focus of this project is on implementing n-tier architecture consisting of a MySQL database with a NodeJS web-server in the middle. NPM MySQL2 is used for database interface. A console-based client UI uses the NPM Inquirer for user interaction and NPM console.table to display query results in a column/row format with headers.  The project supports basic CRUD operations (absent any Delete capability at present).  The database is a normalized, relational database consisting of multiple tables with unique Primary Keys and Foreign Key relationships configured between tables to facilitate usability requirements.
+
 ## Table of Contents (Optional)
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
 - [License](#license)
+- [Features](#features)
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+- Clone the GitHub repository.
+- Run `npm i` to install requirements.
 
 ## Usage
 
 Provide instructions and examples for use. Include screenshots as needed.
+
+- Run `node index.js` from the root of the app folder to start.
+- Use the application prompts to view, add, and update data in the database.
+- To quit the application, use `CTRL+C`.
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
@@ -34,36 +41,21 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
     ![alt text](assets/images/screenshot.png)
     ```
 
-## Credits
-
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+[MIT License](LICENSE)
 
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
 ## Features
 
-If your project has a lot of features, list them here.
+Project requirements
+- Command-line interface with selection menus providing access to functionality
+- View all Departments (Dept Names and IDs)
+- View all Roles (ID, Title, Salary, and Department Name)
+- View all Employees (Employee ID, First Name, Last Name, Title, Salary, and Department)
+- Add new Departments (Dept Name)
+- Add new Roles (Title, Salary, and select Department Name)
+- Add new Employees (First Name, Last Name, select Title, and assign to Manager)
+- Update employee roles (select Employee by name and current role, select new role from list).
 
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
