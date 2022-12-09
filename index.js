@@ -1,5 +1,5 @@
 // Exports
-module.exports = {mainMenu, addDepartment};
+module.exports = {mainMenu, addDepartment, addRole};
 
 // IMPORT REQUIRED PACKAGES/MODULES
 // Import and require console.table
@@ -11,8 +11,8 @@ const inquirer = require('inquirer');
 
 // Import and require user-defined modules
 const {
-  db,
   selectAllDepartments, 
+  selectDeptsForRole,
   selectAllRoles, 
   selectAllEmployees,
   insertNewDepartment,
@@ -30,6 +30,7 @@ const {
 const { 
   chooseMainAction, 
   promptDepartmentName,
+  promptRoleName,
  } = require('./lib/prompts');
 
 // ----------------------------------------------
@@ -60,6 +61,20 @@ function addDepartment() {
   })
 }
 
+function addRole() {
+  inquirer
+  .prompt(promptRoleName)
+  .then((answers) => {
+    // console.log("this is the answer:", answers.roleName, answers.roleSalary, answers.roleDepartment);
+    if(answers.roleName !== "" && answers.roleSalary !== "") {
+      insertNewRole(answers.roleName, answers.roleSalary, answers.roleDepartment);
+    } else {
+      console.log("You must enter Role Name, Salary and Department.");
+      addRole();
+    }
+  })
+}
+
 function processMainMenuChoice(mainActionChoice, callbackFunction) {
 
   switch(mainActionChoice) {
@@ -77,7 +92,8 @@ function processMainMenuChoice(mainActionChoice, callbackFunction) {
       addDepartment();
       break;
     case 'addarole': 
-      insertNewRole();
+      // insertNewRole();
+      addRole();
       break;
     case 'addanemployee': 
       insertNewEmployee();
@@ -98,6 +114,7 @@ function main() {
 }
 
 main()
+// addRole();
 // ----------------------------------------------
 
 
