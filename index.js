@@ -47,8 +47,7 @@ function mainMenu() {
     // and process input
     .then((answers) => {
       processMainMenuChoice(answers.mainActionChoice); //, mainMenu
-   })
-    
+   });
 }
 
 function addDepartment() {
@@ -60,8 +59,8 @@ function addDepartment() {
       } else {
         console.log("Please enter a name for the new department");
         addDepartment();
-      }
-  })
+      };
+  });
 }
 
 function addRole() {
@@ -75,7 +74,7 @@ function addRole() {
       console.log("You must enter Role Name, Salary and Department.");
       addRole();
     }
-  })
+  });
 }
 
 function addEmployee() {
@@ -83,13 +82,13 @@ function addEmployee() {
    .prompt(promptEmployeeInfo)
    .then((answers) => {
       
-      if(answers.empFirstName && answers.empLastName) {
+      if(answers.empFirstName !== "" && answers.empLastName !== "") {
         insertNewEmployee(answers.empFirstName, answers.empLastName, answers.empRole, answers.empManager);
       } else {
         console.log("Please enter first name and last name.");
         addEmployee();
       }
-   })
+   });
 }
 
 function changeEmployeeRole() {
@@ -98,10 +97,10 @@ function changeEmployeeRole() {
    .then((answers) => {
       // console.log(answers);
       updateEmployeeRole(answers.employee, answers.newEmpRole);
-   })
+   });
 }
 
-function processMainMenuChoice(mainActionChoice, callbackFunction) {
+function processMainMenuChoice(mainActionChoice) {
 
   switch(mainActionChoice) {
     case 'viewalldepartments':
@@ -115,6 +114,7 @@ function processMainMenuChoice(mainActionChoice, callbackFunction) {
       selectAllEmployees();
       break;
     case 'addadepartment': 
+      console.log("addadepartment")
       addDepartment();
       break;
     case 'addarole': 
@@ -127,8 +127,21 @@ function processMainMenuChoice(mainActionChoice, callbackFunction) {
       changeEmployeeRole();
       break;
   };
-
-  // callbackFunction();
+    // if (mainActionChoice === 'viewalldepartments') {
+    //     selectAllDepartments();
+    // } else if(mainActionChoice === 'viewallroles') {
+    //     selectAllRoles();
+    // } else if(mainActionChoice === 'viewallemployees') {
+    //     selectAllEmployees();
+    // } else if(mainActionChoice === 'addadepartment') {
+    //     addDepartment();
+    // } else if(mainActionChoice === 'addarole') {
+    //     addRole();
+    // } else if(mainActionChoice === 'addanemployee') {
+    //     addEmployee();
+    // } else if(mainActionChoice === 'updateanemployeerole') {
+    //     changeEmployeeRole();
+    // };
 }
 
 function main() {
