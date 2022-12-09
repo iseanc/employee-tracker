@@ -31,6 +31,7 @@ const {
   chooseMainAction, 
   promptDepartmentName,
   promptRoleName,
+  promptEmployeeInfo,
  } = require('./lib/prompts');
 
 // ----------------------------------------------
@@ -65,7 +66,7 @@ function addRole() {
   inquirer
   .prompt(promptRoleName)
   .then((answers) => {
-    // console.log("this is the answer:", answers.roleName, answers.roleSalary, answers.roleDepartment);
+    
     if(answers.roleName !== "" && answers.roleSalary !== "") {
       insertNewRole(answers.roleName, answers.roleSalary, answers.roleDepartment);
     } else {
@@ -73,6 +74,20 @@ function addRole() {
       addRole();
     }
   })
+}
+
+function addEmployee() {
+  inquirer
+   .prompt(promptEmployeeInfo)
+   .then((answers) => {
+      
+      if(answers.empFirstName && answers.empLastName) {
+        insertNewEmployee(answers.empFirstName, answers.empLastName, answers.empRole, answers.empManager);
+      } else {
+        console.log("Please enter first name and last name.");
+        addEmployee();
+      }
+   })
 }
 
 function processMainMenuChoice(mainActionChoice, callbackFunction) {
@@ -96,7 +111,7 @@ function processMainMenuChoice(mainActionChoice, callbackFunction) {
       addRole();
       break;
     case 'addanemployee': 
-      insertNewEmployee();
+      addEmployee();
       break;
     case 'updateanemployeerole':
       updateEmployeeRole();
