@@ -18,6 +18,7 @@ const {
   insertNewDepartment,
   insertNewRole,
   insertNewEmployee,  
+  selectEmpForRoleUpdate,
   updateEmployeeRole,
   updateEmployeeManager,
   selectEmployeesByManager,
@@ -32,6 +33,7 @@ const {
   promptDepartmentName,
   promptRoleName,
   promptEmployeeInfo,
+  promptUpdateEmployeeRole
  } = require('./lib/prompts');
 
 // ----------------------------------------------
@@ -90,6 +92,15 @@ function addEmployee() {
    })
 }
 
+function changeEmployeeRole() {
+  inquirer
+   .prompt(promptUpdateEmployeeRole)
+   .then((answers) => {
+      // console.log(answers);
+      updateEmployeeRole(answers.employee, answers.newEmpRole);
+   })
+}
+
 function processMainMenuChoice(mainActionChoice, callbackFunction) {
 
   switch(mainActionChoice) {
@@ -107,14 +118,13 @@ function processMainMenuChoice(mainActionChoice, callbackFunction) {
       addDepartment();
       break;
     case 'addarole': 
-      // insertNewRole();
       addRole();
       break;
     case 'addanemployee': 
       addEmployee();
       break;
     case 'updateanemployeerole':
-      updateEmployeeRole();
+      changeEmployeeRole();
       break;
   };
 
