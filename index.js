@@ -126,21 +126,6 @@ function processMainMenuChoice(mainActionChoice) {
       changeEmployeeRole();
       break;
   };
-    // if (mainActionChoice === 'viewalldepartments') {
-    //     selectAllDepartments();
-    // } else if(mainActionChoice === 'viewallroles') {
-    //     selectAllRoles();
-    // } else if(mainActionChoice === 'viewallemployees') {
-    //     selectAllEmployees();
-    // } else if(mainActionChoice === 'addadepartment') {
-    //     addDepartment();
-    // } else if(mainActionChoice === 'addarole') {
-    //     addRole();
-    // } else if(mainActionChoice === 'addanemployee') {
-    //     addEmployee();
-    // } else if(mainActionChoice === 'updateanemployeerole') {
-    //     changeEmployeeRole();
-    // };
 }
 
 function main() {
