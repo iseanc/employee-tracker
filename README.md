@@ -22,15 +22,23 @@ The main focus of this project is on implementing n-tier architecture consisting
 
 Provide instructions and examples for use. Include screenshots as needed.
 
+**NOTE:** These instructions assume the host computer is running functional installations of NodeJS and MySSQL.
+
+In order to use the app, you must create the application database by running the ./db/schema.sql:
+
+- Start an instance of MySQL CLI.
+- At the prompt, run `source ./db/schema.sql`
+
+To add prepared sample data to the database:
+- At the MySQL CLI prompt, `run ./db/seeds.sql`
+
+To run and use the application:
 - Run `node index.js` from the root of the app folder to start.
 - Use the application prompts to view, add, and update data in the database.
 - To quit the application, use `CTRL+C`.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
 **Demo Video**
 [![Demo video](/assets/images/EmpTrackerScreen.png)](assets/images/EmployeeTracker.mp4)
-
 
 
 ## License

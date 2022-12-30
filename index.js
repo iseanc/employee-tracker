@@ -114,7 +114,6 @@ function processMainMenuChoice(mainActionChoice) {
       selectAllEmployees();
       break;
     case 'addadepartment': 
-      console.log("addadepartment")
       addDepartment();
       break;
     case 'addarole': 
